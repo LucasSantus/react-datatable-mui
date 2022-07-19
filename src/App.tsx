@@ -1,25 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from '@mui/material';
+import { DataTable } from './components/DataTable';
+import GeneralCard from './components/GeneralCard';
+import { userColumns } from './data/datatableColumns/userColumns';
+import { User } from './types/User';
+
+const users: () => User[] = () => [
+  {
+    name: 'Jubileu',
+    email: 'jubileu@gmail.com',
+  },
+  {
+    name: 'Irineu',
+    email: 'irineu@gmail.com',
+  },
+  {
+    name: 'Lucas',
+    email: 'lucas@gmail.com',
+  },
+  {
+    name: 'João',
+    email: 'joao@gmail.com',
+  },
+  {
+    name: 'Felipe',
+    email: 'felipe@gmail.com',
+  },
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh'
+      }}
+    >
+      <GeneralCard>
+      <DataTable 
+        columns={userColumns()}
+        data={users()}
+      />
+    </GeneralCard>
+    </Box>
+    
   );
 }
 
